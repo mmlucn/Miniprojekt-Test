@@ -23,9 +23,6 @@ public class TestAddPayment {
 		ps = new ControlPayStation();
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void testAddPayment() throws IllegalCoinException {
