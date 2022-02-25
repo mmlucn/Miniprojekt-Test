@@ -103,6 +103,7 @@ public class TestAddPayment {
 				ps.setReady();
 		}
 		@Test(expected = IllegalCoinException.class)
+		
 public void testAddPaymentIllegalCoin() throws IllegalCoinException {
 	//Arrange
 	int expectedParkingTime = 0;
@@ -171,5 +172,32 @@ public void testAddPaymentIllegalCoin() throws IllegalCoinException {
 					// Assert
 					assertEquals("Should display 0 min.", expectedParkingTime, ps.readDisplay());
 		}
+
+@After
+public void cleanUp8() {
+		ps.setReady();
+}
+@Test(expected = IllegalCoinException.class)
+public void testAddPaymentDifferentCoins() throws IllegalCoinException {
+	// Arrange
+			int expectedParkingTime = 7;
+			int coinValue = 1;
+			int coinValueE = 2;
+			int coinValueNOK = 1;
+			Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
+			Currency.ValidCoinType coinType = Currency.ValidCoinType.INTEGER;
+			Currency.ValidCurrency coinCurrencyE = Currency.ValidCurrency.EURO;
+			Currency.ValidCoinType coinTypeE = Currency.ValidCoinType.FRACTION;
+			Currency.ValidCurrency coinCurrencyNOK = Currency.ValidCurrency.NOK;
+			Currency.ValidCoinType coinTypeNOK = Currency.ValidCoinType.INTEGER;
+			
+			// Act
+			ps.addPayment(coinValue, coinCurrency, coinType);
+			ps.addPayment(coinValueE, coinCurrencyE, coinTypeE);
+			ps.addPayment(coinValueNOK, coinCurrencyNOK, coinTypeNOK);
+				
+			// Assert
+			assertEquals("Should display 0 min.", expectedParkingTime, ps.readDisplay());
+}
 }
 

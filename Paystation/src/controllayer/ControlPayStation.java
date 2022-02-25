@@ -8,7 +8,7 @@ import databaselayer.IDbPBuy;
 import databaselayer.DatabasePBuy;
 
 /**
- * Inspired by the book: Flexible, Reliable Software Henrik Bærbak Christensen:
+ * Inspired by the book: Flexible, Reliable Software Henrik Bï¿½rbak Christensen:
  * Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
  */
 
@@ -34,6 +34,7 @@ public class ControlPayStation {
 		catch (IllegalCoinException coinError) {
 			throw new IllegalCoinException(
 					"Invalid coin: " + currency.toString() + ", " + coinType.toString() + ", " + amount);
+			
 		}
 		
 		PPrice currentPrice = controlPrice.getCurrentPrice();
